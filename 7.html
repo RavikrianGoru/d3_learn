@@ -1,0 +1,22 @@
+<!--
+Transition: it is the process of changing from one state to another of an item.
+The transition() method is available for all selectors and it starts the transition process. This method supports most of the selection methods such as – attr(), style(), etc. But, It does not support the append() and the data() methods, which need to be called before the transition() method.
+
+it provides methods specific to transition like duration(), ease(), etc.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+    <h3>Simple transitions</h3>
+    <script>
+        var t = d3.transition().duration(5000);
+        d3.select("body").transition(t).style("background-color", "lightblue");
+    </script>
+</body>
+
+</html>

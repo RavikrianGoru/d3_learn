@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+    <h3>D3 collection API</h3>
+    <script>
+        var monthMap = { "jan": 1, "Feb": 2, "mar": 3, "apr": 4 };
+        console.log(d3.keys(monthMap));
+        console.log(d3.values(monthMap));
+        console.log(d3.entries(monthMap));
+
+
+
+        var month = d3.map([{ name: "jan" }, { name: "feb" }], function (d) { return d.name; });
+        console.log(month.get("jan")); // {"name": "jan"}
+        console.log(month.get("apr")); // undefined
+        console.log(month.has("feb")); // true
+
+        var map = d3.map().set("fruit", "mango");
+        console.log(map.get("fruit")); // mango
+        console.log(map.remove("fruit")); // remove key and return true.
+        console.log(map.size());    // size is 0 because key removed.
+        console.log(map.empty());   // true
+
+
+
+        var fruits = d3.set().add("mango")
+            .add("apple").add("orange");
+        console.log(fruits.has("grapes")); // return false.
+        console.log(fruits.remove("apple")); //true
+        console.log(fruits.size());    // size is 2
+        console.log(fruits.empty());   // true
+
+    </script>
+</body>
+
+</html>

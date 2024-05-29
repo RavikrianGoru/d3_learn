@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- d3 integration-->
+
+<body>
+    <h2>D3.js is Easy to Use</h2>
+    <p>The script below selects the body element and appends a paragraph with the text "":</p>
+
+    <svg width="500" height="500">
+        <rect x="0" y="0" width="50" height="50"></rect>
+        <rect x="0" y="51" width="50" height="50" fill="green"></rect>
+        <rect x="0" y="102" width="50" height="50" fill="red"></rect>
+        <rect x="0" y="153" width="50" height="50"></rect>
+        <rect x="0" y="204" width="50" height="50" fill="blue"></rect>
+        <rect x="0" y="255" width="50" height="50"></rect>
+        <rect x="0" y="306" width="50" height="50" fill="green"></rect>
+    </svg>
+
+    <script>
+        d3.select("body").append("p").text("Hello World!");
+        d3.select("body").select("h2").text("Replaced dynamically by d3");
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+    <!-- select method-->
+    <div>
+        Hello World! Alert: select by tag
+    </div>
+
+    <div class="wishMsgClass">
+        Hello World! Alert: select by class name
+    </div>
+
+    <div id="wishId">
+        Hello World! Alert: select by id
+    </div>
+    <div class="introClass">
+        Hi!,
+    </div>
+    <div class="introClass2">
+        Hi!,
+    </div>
+
+    <script>
+        //Selection by Tag : if more than one tags available, it selects the first one only.
+        alert(d3.select("div").text());
+
+        //Selection by class Name
+        alert(d3.select(".wishMsgClass").text());
+
+        // Selection by id
+        alert(d3.select("#wishId").text());
+
+
+        //The D3.js selection provides the append() and the text() methods to append new elements into the existing HTML documents
+
+        //append() Method: appends a new element as the last child of the element in the current selection. This method can also modify the style of the elements, their attributes, properties, HTML and text content.
+        d3.select("div.introClass").append("span");
+
+        //The text() method is used to set the content of the selected / appended elements.
+        d3.select("div.introClass").append("span").text("Ravi");
+
+        //The above script performs a chaining operation. D3.js smartly employs a technique called the chain syntax
+        var body = d3.select("div.introClass");
+        var span = body.append("span");
+        span.text(" from D3.js");
+
+        //Modifying Elements :  html(), attr() and style()
+        d3.select(".introClass2").html("Hello World! <span>from D3.js</span>");
+        d3.select(".introClass2").attr("style", "color: red");
+        d3.select("div.introClass").style("color", "blue");
+
+        //classed(): method is exclusively used to set the “class” attribute of an HTML element. 
+
+        //Add class :
+        d3.select(".wishMsgClass").classed("wishMsgClass2", true);//add wishMsgClass2
+        d3.select(".wishMsgClass").attr("style", "color: green");
+        d3.select(".wishMsgClass2").attr("style", "color: blue");
+
+        //Remove class
+        d3.select(".wishMsgClass").classed("wishMsgClass2", false);//remove wishMsgClass2
+        d3.select(".wishMsgClass2").attr("style", "color: red"); //this wont work as wishMsgClass2 is removed 
+
+        //Check class
+        alert("Check: " + d3.select(".wishMsgClass").classed("wishMsgClass2"));
+
+        //Toggle class :To flip a class to the opposite state – remove it if it exists already, add it if it does not yet exist
+
+        var element = d3.select(".wishMsgClass")
+        element.classed("wishMsgClass2", !element.classed("myanotherclass"));
+        alert("Check after toggle: " + d3.select(".wishMsgClass").classed("wishMsgClass2"));
+
+
+
+    </script>
+</body>
+
+</html>

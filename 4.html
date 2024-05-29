@@ -1,0 +1,69 @@
+<!-- 
+    
+    Data join is another important concept in D3.js. It works along with selections and enables us to manipulate the HTML document with respect to our data set (a series of numerical values)
+
+    Data join enables us to inject, modify and remove elements (HTML element as well as embedded SVG elements) based on the data set in the existing HTML document.
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="listID1">
+        <li></li>
+        <li></li>
+    </ul>
+    <ul id="listID2">
+        <li></li>
+        <li></li>
+    </ul>
+    <ul id="listID3">
+        <li></li>
+        <li></li>
+    </ul>
+
+    <input type="button" name="remove" value="Remove fourth value" onclick="javascript:remove()" />
+
+    <script>
+        var list1 = d3.select("#listID1");
+        list1.selectAll("li")
+            .data([10, 20, 30, 25, 15])
+            .text(function (d) { return "Pre-existing element & its value " + d; });
+
+
+        var list2 = d3.select("#listID2");
+        list2.selectAll("li")
+            .data([10, 20, 30, 25, 15])
+            .text(function (d) { return d; })
+            .enter()
+            .append("li")
+            .text(function (d) { return "Dynamic element & its value " + d; });
+
+        var list3 = d3.select("#listID3");
+        list3.selectAll("li")
+            .data([10, 20, 30, 25, 15])
+            .text(function (d) { return d; })
+            .enter()
+            .append("li")
+            .text(function (d) { return d; });
+
+        function remove() {
+            var list3 = d3.select("#listID3");
+            list3.selectAll("li")
+                .data([10, 20, 30, 25])//provide 4 values(any)  
+                .exit()
+                .remove()
+        }
+    </script>
+</body>
+
+</html>
